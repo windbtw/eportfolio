@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Finale CAM - Martin Cornillad</title>
+    <meta name="description" content="Video finale CAM - page temporaire.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        .temp-badge {
+            display: inline-block;
+            background: #ff3860;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 6px;
+            vertical-align: middle;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a.nav-highlight {
+            background: linear-gradient(135deg, #ff3860, #ff8a00);
+            color: #fff !important;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(255, 56, 96, 0.4);
+            animation: pulse-highlight 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-highlight {
+            0%, 100% { box-shadow: 0 4px 12px rgba(255, 56, 96, 0.4); }
+            50% { box-shadow: 0 4px 20px rgba(255, 138, 0, 0.7); }
+        }
+
+        .split-page {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .split-page { grid-template-columns: 1fr; }
+        }
+
+        .split-panel {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .split-panel h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-hover);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe,
+        .video-placeholder {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            background: linear-gradient(135deg, #16213e, #0f3460);
+            font-style: italic;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .a4-wrapper {
+            width: 100%;
+            aspect-ratio: 210 / 297;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-style: italic;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .a4-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Martin Cornillad</div>
+                <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+                    ☰
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html">Welcome</a></li>
+                    <li><a href="engineering.html">Engineering Course</a></li>
+                    <li><a href="mobility.html">International Mobility</a></li>
+                    <li><a href="sustainability.html">Sustainability</a></li>
+                    <li><a href="career.html">Career Development</a></li>
+                    <li><a href="hobbies.html">Hobbies</a></li>
+                    <li><a href="video-finale-cam.html" class="nav-highlight active">Video Finale CAM<span class="temp-badge">Temp</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Video Finale CAM</h1>
+                <p style="color: var(--text-muted); font-style: italic;">Page temporaire</p>
+
+                <div class="split-page">
+                    <div class="split-panel">
+                        <h3>Vidéo YouTube</h3>
+                        <div class="video-wrapper">
+                            <!-- Remplacer YOUTUBE_VIDEO_ID par l'identifiant de la vidéo, puis décommenter l'iframe -->
+                            <!--
+                            <iframe src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID"
+                                    title="YouTube video player"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                            -->
+                            <div class="video-placeholder">Emplacement pour lien vidéo YouTube</div>
+                        </div>
+                    </div>
+
+                    <div class="split-panel">
+                        <h3>Fiche (A4)</h3>
+                        <div class="a4-wrapper">
+                            <!-- Remplacer par <img src="assets/images/fiche.png" alt="Fiche A4"> -->
+                            Emplacement pour image fiche A4
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Martin Cornillad. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/martin-cornillad/" target="_blank"
+                    rel="noopener noreferrer">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
