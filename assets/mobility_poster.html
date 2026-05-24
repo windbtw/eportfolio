@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobility Roadmap – UQAC</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 559px;
+    height: 794px;
+    background: #0a0a0f;
+    color: #f0ece4;
+    font-family: 'Space Mono', monospace;
+    overflow: hidden;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,255,180,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,255,180,0.04) 1px, transparent 1px);
+    background-size: 20px 20px;
+    z-index: 0;
+  }
+
+  .blob1 {
+    position: absolute;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(0,255,160,0.18) 0%, transparent 70%);
+    top: -80px; right: -60px;
+    z-index: 0;
+  }
+  .blob2 {
+    position: absolute;
+    width: 250px; height: 250px;
+    background: radial-gradient(circle, rgba(120,80,255,0.15) 0%, transparent 70%);
+    bottom: 20px; left: -50px;
+    z-index: 0;
+  }
+
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    padding: 24px 26px 18px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    border-left: 4px solid #00ffb0;
+    padding-left: 12px;
+    margin-bottom: 14px;
+  }
+  .header .label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #00ffb0;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .header h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 1.1;
+    color: #f0ece4;
+  }
+  .header h1 span { color: #00ffb0; }
+  .header .sub {
+    font-size: 9.5px;
+    color: #888;
+    margin-top: 4px;
+    letter-spacing: 1px;
+  }
+
+  /* ── INFO ROW ── */
+  .info-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .info-card {
+    flex: 1;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(0,255,176,0.18);
+    border-radius: 7px;
+    padding: 9px 11px;
+  }
+  .info-card .ic-label {
+    font-size: 7.5px;
+    color: #00ffb0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .info-card .ic-value {
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: #f0ece4;
+  }
+
+  /* ── SECTION TITLE ── */
+  .sec-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #00ffb0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .sec-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(0,255,176,0.2);
+  }
+
+  /* ── GOALS ── */
+  .goals-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .goal-box {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 7px;
+    padding: 10px 10px;
+  }
+  .goal-box .g-type {
+    font-size: 7.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+  }
+  .goal-box.acad .g-type { color: #00ffb0; }
+  .goal-box.pro .g-type  { color: #a78bfa; }
+  .goal-box.perso .g-type{ color: #f59e0b; }
+  .goal-box ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .goal-box ul li {
+    font-size: 8px;
+    line-height: 1.4;
+    color: #ccc;
+    padding-left: 10px;
+    position: relative;
+  }
+  .goal-box ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    font-size: 7px;
+  }
+  .goal-box.acad ul li::before { color: #00ffb0; }
+  .goal-box.pro  ul li::before { color: #a78bfa; }
+  .goal-box.perso ul li::before{ color: #f59e0b; }
+
+  /* ── PREP STEPS ── */
+  .steps {
+    display: flex;
+    gap: 7px;
+    margin-bottom: 14px;
+  }
+  .step {
+    flex: 1;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 7px;
+    padding: 9px 9px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .step .s-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: rgba(0,255,176,0.18);
+    line-height: 1;
+  }
+  .step .s-text {
+    font-size: 8px;
+    color: #ccc;
+    line-height: 1.4;
+  }
+
+  /* ── CONFLICT ── */
+  .conflict {
+    background: rgba(255,255,255,0.03);
+    border-left: 3px solid #a78bfa;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 16px;
+    margin-bottom: 14px;
+  }
+  .conflict .c-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: #f0ece4;
+    grid-column: 1 / -1;
+    margin-bottom: 2px;
+  }
+  .conflict .c-why, .conflict .c-how {
+    font-size: 8px;
+    color: #bbb;
+    line-height: 1.5;
+  }
+  .conflict .c-tag {
+    font-size: 7px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .conflict .c-tag.why { color: #a78bfa; }
+  .conflict .c-tag.how { color: #00ffb0; }
+
+  /* ── SKILLS ── */
+  .skills-box {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 7px;
+    padding: 12px 13px;
+    margin-bottom: 14px;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .tag {
+    font-size: 8px;
+    background: rgba(0,255,176,0.1);
+    border: 1px solid rgba(0,255,176,0.25);
+    color: #00ffb0;
+    border-radius: 20px;
+    padding: 4px 10px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 8px;
+    margin-top: auto;
+  }
+  .footer .name {
+    font-family: 'Syne', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    color: #f0ece4;
+  }
+  .footer .year {
+    font-size: 8px;
+    color: #555;
+    letter-spacing: 1px;
+  }
+  .footer .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #00ffb0;
+    box-shadow: 0 0 8px #00ffb0;
+  }
+</style>
+</head>
+<body>
+  <div class="blob1"></div>
+  <div class="blob2"></div>
+
+  <div class="wrapper">
+
+    <!-- HEADER -->
+    <div class="header">
+      <div class="label">Mobility Roadmap · 2026–2027</div>
+      <h1>My Path to <span>Québec</span></h1>
+      <div class="sub">Double Degree · Video Game Design &amp; Development · UQAC</div>
+    </div>
+
+    <!-- INFO ROW -->
+    <div class="info-row">
+      <div class="info-card">
+        <div class="ic-label">Destination</div>
+        <div class="ic-value">Chicoutimi, Québec<br>Canada 🇨🇦</div>
+      </div>
+      <div class="info-card">
+        <div class="ic-label">Host Institution</div>
+        <div class="ic-value">UQAC – Université du<br>Québec à Chicoutimi</div>
+      </div>
+      <div class="info-card">
+        <div class="ic-label">Program</div>
+        <div class="ic-value">Double Degree<br>Video Game Dev</div>
+      </div>
+      <div class="info-card">
+        <div class="ic-label">Duration</div>
+        <div class="ic-value">1 Academic<br>Year</div>
+      </div>
+    </div>
+
+    <!-- GOALS -->
+    <div class="sec-title">Goals</div>
+    <div class="goals-grid">
+      <div class="goal-box acad">
+        <div class="g-type">Academic</div>
+        <ul>
+          <li>Earn double degree in Game Dev</li>
+          <li>Master game engine architecture</li>
+          <li>Deepen AI in games courses</li>
+        </ul>
+      </div>
+      <div class="goal-box pro">
+        <div class="g-type">Professional</div>
+        <ul>
+          <li>Build an international portfolio</li>
+          <li>Network in Québec game industry</li>
+          <li>Improve agile team skills</li>
+        </ul>
+      </div>
+      <div class="goal-box perso">
+        <div class="g-type">Personal</div>
+        <ul>
+          <li>Gain full independence abroad</li>
+          <li>Immerse in Québécois culture</li>
+          <li>Expand comfort zone</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PREP STEPS -->
+    <div class="sec-title">Key Preparation Steps</div>
+    <div class="steps">
+      <div class="step">
+        <div class="s-num">01</div>
+        <div class="s-text">Validate equivalences &amp; course selection with both institutions</div>
+      </div>
+      <div class="step">
+        <div class="s-num">02</div>
+        <div class="s-text">Apply for CAQ (Québec Study Permit) &amp; student visa</div>
+      </div>
+      <div class="step">
+        <div class="s-num">03</div>
+        <div class="s-text">Secure housing in Chicoutimi &amp; arrange health insurance</div>
+      </div>
+      <div class="step">
+        <div class="s-num">04</div>
+        <div class="s-text">Join UQAC game dev student community online before arrival</div>
+      </div>
+    </div>
+
+    <!-- CONFLICT ANTICIPATION -->
+    <div class="sec-title">Conflict Anticipation</div>
+    <div class="conflict">
+      <div class="c-title">⚡ Intercultural Communication Differences</div>
+      <div>
+        <div class="c-tag why">Why it may occur</div>
+        <div class="c-why">Direct vs. indirect feedback styles between French and Québécois academic cultures may create misunderstandings in team projects and peer reviews.</div>
+      </div>
+      <div>
+        <div class="c-tag how">How I'll manage it</div>
+        <div class="c-how">I will ask for explicit feedback early, use active listening, and clarify expectations with teammates from the start of each project.</div>
+      </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="skills-box">
+      <div class="sec-title">Skills to Develop</div>
+      <div class="tags">
+        <span class="tag">Intercultural Communication</span>
+        <span class="tag">Negotiation</span>
+        <span class="tag">Adaptability</span>
+        <span class="tag">Game Engine Dev</span>
+        <span class="tag">English &amp; French Pro</span>
+        <span class="tag">Conflict Resolution</span>
+        <span class="tag">Agile Teamwork</span>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <div class="name">Martin · Computer Science &amp; Video Game Dev</div>
+      <div class="dot"></div>
+      <div class="year">UQAC · 2026 – 2027</div>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -26,6 +26,10 @@
         }
 
         .nav-links a.nav-highlight {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
             background: linear-gradient(135deg, #ff3860, #ff8a00);
             color: #fff !important;
             padding: 6px 14px;
@@ -33,6 +37,11 @@
             font-weight: 700;
             box-shadow: 0 4px 12px rgba(255, 56, 96, 0.4);
             animation: pulse-highlight 2s ease-in-out infinite;
+        }
+        .nav-links a.nav-highlight .temp-badge {
+            background: #fff;
+            color: #ff3860;
+            margin-left: 0;
         }
 
         @keyframes pulse-highlight {
@@ -96,24 +105,30 @@
 
         .a4-wrapper {
             width: 100%;
-            aspect-ratio: 210 / 297;
-            background: #fff;
+            aspect-ratio: 559 / 794;
+            background: #0a0a0f;
             border-radius: 8px;
             overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-style: italic;
-            text-align: center;
-            padding: 1rem;
+            position: relative;
         }
 
         .a4-wrapper img {
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: contain;
             display: block;
+        }
+
+        .a4-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 559px;
+            height: 794px;
+            border: 0;
+            transform-origin: top left;
         }
     </style>
 </head>
@@ -133,7 +148,7 @@
                     <li><a href="sustainability.html">Sustainability</a></li>
                     <li><a href="career.html">Career Development</a></li>
                     <li><a href="hobbies.html">Hobbies</a></li>
-                    <li><a href="video-finale-cam.html" class="nav-highlight active">Video Finale CAM<span class="temp-badge">Temp</span></a></li>
+                    <li><a href="video-finale-cam.html" class="nav-highlight active">Video Finale CAM <span class="temp-badge">Temp</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -161,10 +176,11 @@
                     </div>
 
                     <div class="split-panel">
-                        <h3>Fiche (A4)</h3>
+                        <h3>Fiche (A4) — Mobility Roadmap</h3>
                         <div class="a4-wrapper">
-                            <!-- Remplacer par <img src="assets/images/fiche.png" alt="Fiche A4"> -->
-                            Emplacement pour image fiche A4
+                            <iframe src="assets/mobility_poster.html"
+                                    title="Mobility Roadmap UQAC"
+                                    scrolling="no"></iframe>
                         </div>
                     </div>
                 </div>
@@ -183,6 +199,19 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <script>
+        (function () {
+            const wrapper = document.querySelector('.a4-wrapper');
+            const frame = wrapper && wrapper.querySelector('iframe');
+            if (!frame) return;
+            const fit = () => {
+                const scale = wrapper.clientWidth / 559;
+                frame.style.transform = `scale(${scale})`;
+            };
+            new ResizeObserver(fit).observe(wrapper);
+            fit();
+        })();
+    </script>
 </body>
 
 </html>
